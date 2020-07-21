@@ -19,7 +19,7 @@ function App() {
         >
           Learn React
         </a>
-        <Person />
+        <Person name="Indra" age="20" />
       </header>
     </div>
   );
