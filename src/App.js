@@ -16,12 +16,12 @@ const App = (props) => {
 
   console.log(personsState, otherState);
 
-  const switchName = () => {
+  const switchName = (newName) => {
     // console.log('Was clicked!');
     // DONT DO THIS !! personsState.persons[0];
     setPersonsState({
       persons: [
-        { name: 'Indra', age: '22' },
+        { name: newName, age: '22' },
         { name: 'Indri', age: '19' },
         { name: 'Radit', age: '12' },
       ]
@@ -32,10 +32,20 @@ const App = (props) => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={switchName}>Switch Name</button>
-        <Person name={personsState.persons[0].name} age={personsState.persons[0].age}>My hobies play game</Person>
-        <Person name={personsState.persons[1].name} age={personsState.persons[1].age}></Person>
-        <Person name={personsState.persons[2].name} age={personsState.persons[2].age}></Person>
+        <button onClick={() => switchName('Indraawagin')}>Switch Name</button>
+        <Person name={
+          personsState.persons[0].name}
+          age={personsState.persons[0].age}>
+          My hobies play game</Person>
+
+        <Person name={
+          personsState.persons[1].name}
+          age={personsState.persons[1].age}
+          click={switchName.bind(setPersonsState, 'Indra')} />
+
+        <Person name=
+          {personsState.persons[2].name}
+          age={personsState.persons[2].age} />
       </header>
     </div>
   );
