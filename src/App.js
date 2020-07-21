@@ -9,7 +9,7 @@ const App = (props) => {
       { name: 'Indra', age: 20 },
       { name: 'Indri', age: 17 },
       { name: 'Radit', age: 10 },
-    ]
+    ],
   });
 
   const [otherState, setOtherState] = useState('use other value')
