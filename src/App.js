@@ -14,7 +14,7 @@ const App = (props) => {
 
   const [otherState, setOtherState] = useState('use other value')
 
-  console.log(personsState, otherState);
+  // console.log(personsState, otherState);
 
   const switchName = (newName) => {
     // console.log('Was clicked!');
@@ -28,23 +28,34 @@ const App = (props) => {
     })
   }
 
+  const inputChangedName = (event) => {
+    setPersonsState({
+      persons: [
+        { name: 'Indra', age: '22' },
+        { name: event.target.value, age: '19' },
+        { name: 'Radit', age: '12' },
+      ]
+    })
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={() => switchName('Indraawagin')}>Switch Name</button>
-        <Person name={
-          personsState.persons[0].name}
+        <button onClick={() => switchName('Indraawagin')}>Switch Name</button> {/* New Binding */}
+        <Person
+          name={personsState.persons[0].name}
           age={personsState.persons[0].age}>
           My hobies play game</Person>
 
-        <Person name={
-          personsState.persons[1].name}
+        <Person
+          name={personsState.persons[1].name}
           age={personsState.persons[1].age}
-          click={switchName.bind(setPersonsState, 'Indra')} />
+          click={switchName.bind(setPersonsState, 'Rogue')} // Old Binding
+          changed={inputChangedName} />
 
-        <Person name=
-          {personsState.persons[2].name}
+        <Person
+          name={personsState.persons[2].name}
           age={personsState.persons[2].age} />
       </header>
     </div>
