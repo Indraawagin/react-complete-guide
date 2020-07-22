@@ -38,11 +38,19 @@ const App = (props) => {
     })
   }
 
+  const style = {
+    backgroundColor: '#61DAFB',
+    font: 'inherit',
+    padding: '8px',
+    border: '1px solid #61DAFB',
+    cursor: 'pointer',
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={() => switchName('Indraawagin')}>Switch Name</button> {/* New Binding */}
+        <button style={style} onClick={() => switchName('Indraawagin')}>Switch Name</button> {/* New Binding */}
         <Person
           name={personsState.persons[0].name}
           age={personsState.persons[0].age}>
