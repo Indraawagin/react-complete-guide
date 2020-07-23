@@ -24,13 +24,24 @@ const App = (props) => {
     setPersonsState({ persons: persons })
   }
 
-  const inputChangedName = (event) => {
+  const nameCangedHandler = (event, id) => {
+    const personIndex = personsState.persons.findIndex(p => {
+      return p.id === id
+    })
+
+    const person = {
+      ...personsState.persons[personIndex]
+    }
+
+    // const person = Object.assign({}, personsState.persons[personIndex]) //!OLD
+
+    person.name = event.target.value;
+
+    const persons = [...personsState.persons]
+    persons[personIndex] = person
+
     setPersonsState({
-      persons: [
-        { name: "Indra", age: "22" },
-        { name: event.target.value, age: "19" },
-        { name: "Radit", age: "12" },
-      ],
+      persons: persons
     });
   };
 
@@ -49,7 +60,8 @@ const App = (props) => {
               click={() => deletePersonHandler(index)}
               name={person.name}
               age={person.age}
-              key={person.id} />
+              key={person.id}
+              changed={(event) => nameCangedHandler(event, person.id)} />
           )
         })}
       </div>
