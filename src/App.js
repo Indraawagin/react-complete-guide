@@ -17,19 +17,11 @@ const App = (props) => {
     showPersons: false,
   });
 
-  // console.log(personsState, otherState);
-
-  const switchName = (newName) => {
-    // console.log('Was clicked!');
-    // DONT DO THIS !! personsState.persons[0];
-    setPersonsState({
-      persons: [
-        { name: newName, age: "22" },
-        { name: "Indri", age: "19" },
-        { name: "Radit", age: "12" },
-      ],
-    });
-  };
+  const deletePersonHandler = (personIndex) => {
+    const persons = personsState.persons
+    persons.splice(personIndex, 1)
+    setPersonsState({ persons: persons })
+  }
 
   const inputChangedName = (event) => {
     setPersonsState({
@@ -50,9 +42,10 @@ const App = (props) => {
   if (showPersonState.showPersons) {
     persons = (
       <div>
-        {personsState.persons.map(person => {
+        {personsState.persons.map((person, index) => {
           return (
             <Person
+              click={() => deletePersonHandler(index)}
               name={person.name}
               age={person.age} />
           )
