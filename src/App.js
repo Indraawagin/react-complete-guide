@@ -6,9 +6,9 @@ import Person from "./Person/Person";
 const App = (props) => {
   const [personsState, setPersonsState] = useState({
     persons: [
-      { name: "Indra", age: 20 },
-      { name: "Indri", age: 17 },
-      { name: "Radit", age: 10 },
+      { id: '1asd', name: "Indri", age: 17 },
+      { id: '1eads', name: "Indra", age: 20 },
+      { id: '12dd', name: "Radit", age: 10 },
     ],
     otherState: "use other value",
   });
@@ -48,7 +48,8 @@ const App = (props) => {
             <Person
               click={() => deletePersonHandler(index)}
               name={person.name}
-              age={person.age} />
+              age={person.age}
+              key={person.id} />
           )
         })}
       </div>
