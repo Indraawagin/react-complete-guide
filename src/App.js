@@ -50,24 +50,13 @@ const App = (props) => {
   if (showPersonState.showPersons) {
     persons = (
       <div>
-        <Person
-          name={personsState.persons[0].name}
-          age={personsState.persons[0].age}
-        >
-          My hobies play game
-        </Person>
-
-        <Person
-          name={personsState.persons[1].name}
-          age={personsState.persons[1].age}
-          click={switchName.bind(setPersonsState, "Rogue")}
-          changed={inputChangedName}
-        />
-
-        <Person
-          name={personsState.persons[2].name}
-          age={personsState.persons[2].age}
-        />
+        {personsState.persons.map(person => {
+          return (
+            <Person
+              name={person.name}
+              age={person.age} />
+          )
+        })}
       </div>
     );
   }
