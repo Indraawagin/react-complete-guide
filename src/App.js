@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Person from './Person/Person';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Person from "./Person/Person";
 
 const App = (props) => {
   const [personsState, setPersonsState] = useState({
     persons: [
-      { name: 'Indra', age: 20 },
-      { name: 'Indri', age: 17 },
-      { name: 'Radit', age: 10 },
+      { name: "Indra", age: 20 },
+      { name: "Indri", age: 17 },
+      { name: "Radit", age: 10 },
     ],
-    otherState: 'use other value',
+    otherState: "use other value",
   });
 
   const [showPersonState, setshowPersonState] = useState({
-    showPersons: false
-  })
+    showPersons: false,
+  });
 
   // console.log(personsState, otherState);
 
@@ -24,63 +24,74 @@ const App = (props) => {
     // DONT DO THIS !! personsState.persons[0];
     setPersonsState({
       persons: [
-        { name: newName, age: '22' },
-        { name: 'Indri', age: '19' },
-        { name: 'Radit', age: '12' },
-      ]
-    })
-  }
+        { name: newName, age: "22" },
+        { name: "Indri", age: "19" },
+        { name: "Radit", age: "12" },
+      ],
+    });
+  };
 
   const inputChangedName = (event) => {
     setPersonsState({
       persons: [
-        { name: 'Indra', age: '22' },
-        { name: event.target.value, age: '19' },
-        { name: 'Radit', age: '12' },
-      ]
-    })
-  }
+        { name: "Indra", age: "22" },
+        { name: event.target.value, age: "19" },
+        { name: "Radit", age: "12" },
+      ],
+    });
+  };
 
   const tooglePersonHandler = () => {
     const doesShow = showPersonState.showPersons;
-    setshowPersonState({ showPersons: !doesShow })
+    setshowPersonState({ showPersons: !doesShow });
+  };
+
+  let persons = null;
+  if (showPersonState.showPersons) {
+    persons = (
+      <div>
+        <Person
+          name={personsState.persons[0].name}
+          age={personsState.persons[0].age}
+        >
+          My hobies play game
+        </Person>
+
+        <Person
+          name={personsState.persons[1].name}
+          age={personsState.persons[1].age}
+          click={switchName.bind(setPersonsState, "Rogue")}
+          changed={inputChangedName}
+        />
+
+        <Person
+          name={personsState.persons[2].name}
+          age={personsState.persons[2].age}
+        />
+      </div>
+    );
   }
 
   const style = {
-    backgroundColor: '#61DAFB',
-    font: 'inherit',
-    padding: '8px',
-    border: '1px solid #61DAFB',
-    cursor: 'pointer',
-  }
+    backgroundColor: "#61DAFB",
+    font: "inherit",
+    padding: "8px",
+    border: "1px solid #61DAFB",
+    cursor: "pointer",
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <button style={style} onClick={tooglePersonHandler}>Show Name</button>
-        {showPersonState.showPersons === true ?
-          <div>
-            <Person
-              name={personsState.persons[0].name}
-              age={personsState.persons[0].age}>
-              My hobies play game</Person>
-
-            <Person
-              name={personsState.persons[1].name}
-              age={personsState.persons[1].age}
-              click={switchName.bind(setPersonsState, 'Rogue')}
-              changed={inputChangedName} />
-
-            <Person
-              name={personsState.persons[2].name}
-              age={personsState.persons[2].age} />
-          </div> : null
-        }
+        <button style={style} onClick={tooglePersonHandler}>
+          Show Name
+        </button>
+        {persons}
       </header>
     </div>
   );
-}
+};
 // return React.createElement('div', null, React.createElement('h1', null, 'Learn React'));
 
 export default App;
