@@ -37,3 +37,11 @@
     transform: rotate(360deg);
   }
 }
+
+.red {
+  color: #D42E3E;
+}
+
+.bold {
+  font-weight: bold;
+}

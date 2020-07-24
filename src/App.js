@@ -49,8 +49,8 @@ const App = (props) => {
   const style = {
     backgroundColor: "#007BFF",
     color: "white",
-    fontSize: "25px",
-    padding: "10px",
+    fontSize: "22px",
+    padding: "12px",
     borderRadius: "5px",
     border: "unset",
     cursor: "pointer",
@@ -77,10 +77,19 @@ const App = (props) => {
     style.border = "unset";
   }
 
+  const classes = [];
+  if (personsState.persons.length <= 2) {
+    classes.push("red");
+  }
+  if (personsState.persons.length <= 1) {
+    classes.push("bold");
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <p className={classes.join(" ")}>This is really working!</p>
         <button style={style} onClick={tooglePersonHandler}>
           Show Name
         </button>
