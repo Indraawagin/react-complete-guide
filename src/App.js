@@ -6,9 +6,9 @@ import Person from "./Person/Person";
 const App = (props) => {
   const [personsState, setPersonsState] = useState({
     persons: [
-      { id: '1asd', name: "Indri", age: 17 },
-      { id: '1eads', name: "Indra", age: 20 },
-      { id: '12dd', name: "Radit", age: 10 },
+      { id: "1asd", name: "Indri", age: 17 },
+      { id: "1eads", name: "Indra", age: 20 },
+      { id: "12dd", name: "Radit", age: 10 },
     ],
     otherState: "use other value",
   });
@@ -19,35 +19,41 @@ const App = (props) => {
 
   const deletePersonHandler = (personIndex) => {
     // const persons = personsState.persons.slice() //!OLD
-    const persons = [...personsState.persons]
-    persons.splice(personIndex, 1)
-    setPersonsState({ persons: persons })
-  }
+    const persons = [...personsState.persons];
+    persons.splice(personIndex, 1);
+    setPersonsState({ persons: persons });
+  };
 
   const nameCangedHandler = (event, id) => {
-    const personIndex = personsState.persons.findIndex(p => {
-      return p.id === id
-    })
-
+    const personIndex = personsState.persons.findIndex((p) => {
+      return p.id === id;
+    });
     const person = {
-      ...personsState.persons[personIndex]
-    }
-
+      ...personsState.persons[personIndex],
+    };
     // const person = Object.assign({}, personsState.persons[personIndex]) //!OLD
-
     person.name = event.target.value;
-
-    const persons = [...personsState.persons]
-    persons[personIndex] = person
+    const persons = [...personsState.persons];
+    persons[personIndex] = person;
 
     setPersonsState({
-      persons: persons
+      persons: persons,
     });
   };
 
   const tooglePersonHandler = () => {
     const doesShow = showPersonState.showPersons;
     setshowPersonState({ showPersons: !doesShow });
+  };
+
+  const style = {
+    backgroundColor: "#007BFF",
+    color: "white",
+    fontSize: "25px",
+    padding: "10px",
+    borderRadius: "5px",
+    border: "unset",
+    cursor: "pointer",
   };
 
   let persons = null;
@@ -61,20 +67,15 @@ const App = (props) => {
               name={person.name}
               age={person.age}
               key={person.id}
-              changed={(event) => nameCangedHandler(event, person.id)} />
-          )
+              changed={(event) => nameCangedHandler(event, person.id)}
+            />
+          );
         })}
       </div>
     );
+    style.backgroundColor = "#D42E3E";
+    style.border = "unset";
   }
-
-  const style = {
-    backgroundColor: "#61DAFB",
-    font: "inherit",
-    padding: "8px",
-    border: "1px solid #61DAFB",
-    cursor: "pointer",
-  };
 
   return (
     <div className="App">
