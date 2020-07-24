@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Radium, { StyleRoot } from "radium";
+import Radium from "radium";
 import logo from "./logo.svg";
 import "./App.css";
 import Person from "./Person/Person";
@@ -94,18 +94,16 @@ const App = (props) => {
   }
 
   return (
-    <StyleRoot>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p className={classes.join(" ")}>This is really working!</p>
-          <button style={style} onClick={tooglePersonHandler}>
-            Show Name
-          </button>
-          {persons}
-        </header>
-      </div>
-    </StyleRoot>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p className={classes.join(" ")}>This is really working!</p>
+        <button style={style} onClick={tooglePersonHandler}>
+          Show Name
+        </button>
+        {persons}
+      </header>
+    </div>
   );
 };
 // return React.createElement('div', null, React.createElement('h1', null, 'Learn React'));
