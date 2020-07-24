@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Radium from "radium";
 import logo from "./logo.svg";
 import "./App.css";
 import Person from "./Person/Person";
@@ -49,11 +50,15 @@ const App = (props) => {
   const style = {
     backgroundColor: "#007BFF",
     color: "white",
-    fontSize: "22px",
-    padding: "12px",
+    font: "inherit",
+    padding: "8px",
     borderRadius: "5px",
-    border: "unset",
+    border: "1px solid #007BFF",
     cursor: "pointer",
+    ":hover": {
+      backgroundColor: "#0069d9",
+      borderColor: "#0062cc",
+    },
   };
 
   let persons = null;
@@ -74,7 +79,10 @@ const App = (props) => {
       </div>
     );
     style.backgroundColor = "#D42E3E";
-    style.border = "unset";
+    style[":hover"] = {
+      backgroundColor: "#dc3545",
+      borderColor: "#dc3545",
+    };
   }
 
   const classes = [];
@@ -100,4 +108,4 @@ const App = (props) => {
 };
 // return React.createElement('div', null, React.createElement('h1', null, 'Learn React'));
 
-export default App;
+export default Radium(App);
