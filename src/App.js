@@ -5,6 +5,10 @@ import "./App.css";
 import Person from "./Person/Person";
 
 //TODO: <StyledButton  alt={showPersonState.showPersons} onClick={tooglePersonHandler}/>
+<<<<<<< HEAD
+=======
+
+>>>>>>> f80c602106f7aabc3b09cb22454a70572bf40156
 const StyledButton = styled.button`
 background-color: ${(props) => (props.alt ? "#D42E3E" : "#007BFF")};
 color: white;
