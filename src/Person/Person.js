@@ -16,6 +16,12 @@ const StyleDiv = styled.div`
 `;
 
 const person = (props) => {
+  // const style = {
+  //   "@media (min-width: 520px)": {
+  //     width: "450px",
+  //   },
+  // };
+
   return (
     <StyleDiv>
       <p onClick={props.click}>
