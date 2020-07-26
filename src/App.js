@@ -1,21 +1,7 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import logo from "./logo.svg";
-import "./App.css";
+import styles from "./App.module.css";
 import Person from "./Person/Person";
-
-//TODO: <StyledButton  alt={showPersonState.showPersons} onClick={tooglePersonHandler}/>
-const StyledButton = styled.button`
-background-color: ${(props) => (props.alt ? "#D42E3E" : "#007BFF")};
-color: white;
-font: inherit;
-padding: 8px;
-border-radius: 5px;
-border: 1px solid ${(props) => (props.alt ? "#dc3545" : "#0062cc")};
-cursor: pointer;
-&:hover {
-  background-color: ${(props) => (props.alt ? "#dc3545" : "#0069d9")};
-`;
 
 //TODO: APP
 const App = (props) => {
@@ -59,11 +45,14 @@ const App = (props) => {
     });
   };
 
-  //TODO: <button style={style} onClick={tooglePersonHandler}>
+  //TODO: <button ... onClick={tooglePersonHandler}>
   const tooglePersonHandler = () => {
     const doesShow = showPersonState.showPersons;
     setshowPersonState({ showPersons: !doesShow });
   };
+
+  //TODO: <button className={btnClass} ... >
+  let btnClass = "";
 
   ///TODO: {persons}
   let persons = null;
@@ -83,28 +72,26 @@ const App = (props) => {
         })}
       </div>
     );
+    btnClass = styles.Red;
   }
 
-  ///TODO: <p className={classes.join(" ")}>This is really working!</p>
-  const classes = [];
+  ///TODO: <p className={assignedClasses.join(" ")}>This is really working!</p>
+  const assignedClasses = [];
   if (personsState.persons.length <= 2) {
-    classes.push("red");
+    assignedClasses.push(styles.red);
   }
   if (personsState.persons.length <= 1) {
-    classes.push("bold");
+    assignedClasses.push(styles.bold);
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className={classes.join(" ")}>This is really working!</p>
-        <StyledButton
-          alt={showPersonState.showPersons}
-          onClick={tooglePersonHandler}
-        >
+    <div className={styles.App}>
+      <header className={styles.AppHeader}>
+        <img src={logo} className={styles.AppLogo} alt="logo" />
+        <p className={assignedClasses.join(" ")}>This is really working!</p>
+        <button className={btnClass} onClick={tooglePersonHandler}>
           Show Name
-        </StyledButton>
+        </button>
         {persons}
       </header>
     </div>
