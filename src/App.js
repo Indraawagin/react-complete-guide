@@ -1,10 +1,29 @@
 import React, { useState } from "react";
-import Radium from "radium";
+import styled from "styled-components";
 import logo from "./logo.svg";
 import "./App.css";
 import Person from "./Person/Person";
 
+//TODO: <StyledButton  alt={showPersonState.showPersons} onClick={tooglePersonHandler}/>
+<<<<<<< HEAD
+=======
+
+>>>>>>> f80c602106f7aabc3b09cb22454a70572bf40156
+const StyledButton = styled.button`
+background-color: ${(props) => (props.alt ? "#D42E3E" : "#007BFF")};
+color: white;
+font: inherit;
+padding: 8px;
+border-radius: 5px;
+border: 1px solid ${(props) => (props.alt ? "#dc3545" : "#0062cc")};
+cursor: pointer;
+&:hover {
+  background-color: ${(props) => (props.alt ? "#dc3545" : "#0069d9")};
+`;
+
+//TODO: APP
 const App = (props) => {
+  // TODO: Hooks Person
   const [personsState, setPersonsState] = useState({
     persons: [
       { id: "1asd", name: "Indri", age: 17 },
@@ -14,10 +33,12 @@ const App = (props) => {
     otherState: "use other value",
   });
 
+  // TODO: Hook Show Person
   const [showPersonState, setshowPersonState] = useState({
     showPersons: false,
   });
 
+  //TODO: click={() => deletePersonHandler(index)}
   const deletePersonHandler = (personIndex) => {
     // const persons = personsState.persons.slice() //!OLD
     const persons = [...personsState.persons];
@@ -25,6 +46,7 @@ const App = (props) => {
     setPersonsState({ persons: persons });
   };
 
+  //TODO: changed={(event) => nameCangedHandler(event, person.id)}
   const nameCangedHandler = (event, id) => {
     const personIndex = personsState.persons.findIndex((p) => {
       return p.id === id;
@@ -36,31 +58,18 @@ const App = (props) => {
     person.name = event.target.value;
     const persons = [...personsState.persons];
     persons[personIndex] = person;
-
     setPersonsState({
       persons: persons,
     });
   };
 
+  //TODO: <button style={style} onClick={tooglePersonHandler}>
   const tooglePersonHandler = () => {
     const doesShow = showPersonState.showPersons;
     setshowPersonState({ showPersons: !doesShow });
   };
 
-  const style = {
-    backgroundColor: "#007BFF",
-    color: "white",
-    font: "inherit",
-    padding: "8px",
-    borderRadius: "5px",
-    border: "1px solid #007BFF",
-    cursor: "pointer",
-    ":hover": {
-      backgroundColor: "#0069d9",
-      borderColor: "#0062cc",
-    },
-  };
-
+  ///TODO: {persons}
   let persons = null;
   if (showPersonState.showPersons) {
     persons = (
@@ -78,13 +87,9 @@ const App = (props) => {
         })}
       </div>
     );
-    style.backgroundColor = "#D42E3E";
-    style[":hover"] = {
-      backgroundColor: "#dc3545",
-      borderColor: "#dc3545",
-    };
   }
 
+  ///TODO: <p className={classes.join(" ")}>This is really working!</p>
   const classes = [];
   if (personsState.persons.length <= 2) {
     classes.push("red");
@@ -98,9 +103,12 @@ const App = (props) => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p className={classes.join(" ")}>This is really working!</p>
-        <button style={style} onClick={tooglePersonHandler}>
+        <StyledButton
+          alt={showPersonState.showPersons}
+          onClick={tooglePersonHandler}
+        >
           Show Name
-        </button>
+        </StyledButton>
         {persons}
       </header>
     </div>
@@ -108,4 +116,4 @@ const App = (props) => {
 };
 // return React.createElement('div', null, React.createElement('h1', null, 'Learn React'));
 
-export default Radium(App);
+export default App;
