@@ -4,7 +4,10 @@ import logo from "./logo.svg";
 import "./App.css";
 import Person from "./Person/Person";
 
+<<<<<<< HEAD
 //TODO: <StyledButton  alt={showPersonState.showPersons} onClick={tooglePersonHandler}/>
+=======
+>>>>>>> b95f03bcb5c64bb259e628d1d914bd1d701c6b39
 const StyledButton = styled.button`
 background-color: ${(props) => (props.alt ? "#D42E3E" : "#007BFF")};
 color: white;
