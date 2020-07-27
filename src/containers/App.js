@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import styles from "./App.module.css";
-import Person from "./Person/Person";
+import Person from "../components/Persons/Person/Person";
 
 //TODO: APP
 const App = (props) => {
