@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import styles from "./App.module.css";
-import Person from "../components/Persons/Person/Person";
+import Persons from "../components/Persons/Persons";
+import Cockpit from "../components/Cockpit/Cockpit";
 
 //TODO: APP
 const App = (props) => {
@@ -20,7 +20,7 @@ const App = (props) => {
     showPersons: false,
   });
 
-  //TODO: click={() => deletePersonHandler(index)}
+  //TODO: clicked={deletePersonHandler}
   const deletePersonHandler = (personIndex) => {
     // const persons = personsState.persons.slice() //!OLD
     const persons = [...personsState.persons];
@@ -28,7 +28,7 @@ const App = (props) => {
     setPersonsState({ persons: persons });
   };
 
-  //TODO: changed={(event) => nameCangedHandler(event, person.id)}
+  //TODO: changed={nameCangedHandler}
   const nameCangedHandler = (event, id) => {
     const personIndex = personsState.persons.findIndex((p) => {
       return p.id === id;
@@ -45,53 +45,33 @@ const App = (props) => {
     });
   };
 
-  //TODO: <button ... onClick={tooglePersonHandler}>
+  //TODO:  clicked={tooglePersonHandler}
   const tooglePersonHandler = () => {
     const doesShow = showPersonState.showPersons;
     setshowPersonState({ showPersons: !doesShow });
   };
 
-  //TODO: <button className={btnClass} ... >
-  let btnClass = "";
-
   ///TODO: {persons}
   let persons = null;
   if (showPersonState.showPersons) {
     persons = (
-      <div>
-        {personsState.persons.map((person, index) => {
-          return (
-            <Person
-              click={() => deletePersonHandler(index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => nameCangedHandler(event, person.id)}
-            />
-          );
-        })}
-      </div>
+      <Persons
+        persons={personsState.persons}
+        clicked={deletePersonHandler}
+        changed={nameCangedHandler}
+      />
     );
-    btnClass = styles.Red;
-  }
-
-  ///TODO: <p className={assignedClasses.join(" ")}>This is really working!</p>
-  const assignedClasses = [];
-  if (personsState.persons.length <= 2) {
-    assignedClasses.push(styles.red);
-  }
-  if (personsState.persons.length <= 1) {
-    assignedClasses.push(styles.bold);
   }
 
   return (
     <div className={styles.App}>
       <header className={styles.AppHeader}>
-        <img src={logo} className={styles.AppLogo} alt="logo" />
-        <p className={assignedClasses.join(" ")}>This is really working!</p>
-        <button className={btnClass} onClick={tooglePersonHandler}>
-          Show Name
-        </button>
+        <Cockpit
+          title={props.appTitle}
+          showPersons={showPersonState.showPersons}
+          persons={personsState.persons}
+          clicked={tooglePersonHandler}
+        />
         {persons}
       </header>
     </div>

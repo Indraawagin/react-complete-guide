@@ -1,0 +1,53 @@
+.AppLogo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .AppLogo {
+        animation: AppLogoSpin infinite 20s linear;
+    }
+}
+
+@keyframes AppLogoSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.red {
+    color: #D42E3E;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.Cockpit button {
+    background-color: #007BFF;
+    color: white;
+    font: inherit;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #0062cc;
+    cursor: pointer;
+
+}
+
+.Cockpit button:hover {
+    background-color: #0069d9;
+}
+
+.Cockpit button.Red {
+    background-color: #D42E3E;
+    border: 1px solid #dc3545;
+}
+
+
+.Cockpit button.Red:hover {
+    background-color: #dc3545;
+}
