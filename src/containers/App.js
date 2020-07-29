@@ -15,6 +15,7 @@ const App = (props) => {
       { id: "12dd", name: "Radit", age: 10 },
     ],
     otherState: "use other value",
+    changeCounter: 0,
   });
 
   // TODO: Hook Show Person
@@ -42,8 +43,11 @@ const App = (props) => {
     person.name = event.target.value;
     const persons = [...personsState.persons];
     persons[personIndex] = person;
-    setPersonsState({
-      persons: persons,
+    setPersonsState((prevState, props) => {
+      return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1,
+      };
     });
   };
 
