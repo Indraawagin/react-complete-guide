@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styles from "./App.module.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
-import WithClass from "../hoc/WithClass";
+import withClass from "../hoc/withClass";
+import Auxiliary from "../hoc/Auxiliary";
 
 //TODO: APP
 const App = (props) => {
@@ -65,7 +66,7 @@ const App = (props) => {
   }
 
   return (
-    <WithClass withClass={styles.App}>
+    <Auxiliary>
       <header className={styles.AppHeader}>
         <Cockpit
           title={props.appTitle}
@@ -75,9 +76,9 @@ const App = (props) => {
         />
         {persons}
       </header>
-    </WithClass>
+    </Auxiliary>
   );
 };
 // return React.createElement('div', null, React.createElement('h1', null, 'Learn React'));
 
-export default App;
+export default withClass(App, styles.App);
