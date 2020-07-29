@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./App.module.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
+import WithClass from "../hoc/WithClass";
 
 //TODO: APP
 const App = (props) => {
@@ -64,7 +65,7 @@ const App = (props) => {
   }
 
   return (
-    <div className={styles.App}>
+    <WithClass withClass={styles.App}>
       <header className={styles.AppHeader}>
         <Cockpit
           title={props.appTitle}
@@ -74,7 +75,7 @@ const App = (props) => {
         />
         {persons}
       </header>
-    </div>
+    </WithClass>
   );
 };
 // return React.createElement('div', null, React.createElement('h1', null, 'Learn React'));
