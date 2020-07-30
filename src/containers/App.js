@@ -23,6 +23,11 @@ const App = (props) => {
     showPersons: false,
   });
 
+  // TODO: Hook Authentication
+  const [auth, setAuth] = useState({
+    authenticated: false,
+  });
+
   //TODO: clicked={deletePersonHandler}
   const deletePersonHandler = (personIndex) => {
     // const persons = personsState.persons.slice() //!OLD
@@ -57,6 +62,13 @@ const App = (props) => {
     setshowPersonState({ showPersons: !doesShow });
   };
 
+  //Todo: login={loginHandler}
+  const loginHandler = () => {
+    setAuth({
+      authenticated: true,
+    });
+  };
+
   ///TODO: {persons}
   let persons = null;
   if (showPersonState.showPersons) {
@@ -65,6 +77,7 @@ const App = (props) => {
         persons={personsState.persons}
         clicked={deletePersonHandler}
         changed={nameCangedHandler}
+        isAuthenticated={auth.authenticated}
       />
     );
   }
@@ -77,6 +90,7 @@ const App = (props) => {
           showPersons={showPersonState.showPersons}
           persons={personsState.persons}
           clicked={tooglePersonHandler}
+          login={loginHandler}
         />
         {persons}
       </header>

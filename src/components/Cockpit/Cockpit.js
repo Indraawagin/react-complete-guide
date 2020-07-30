@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import logo from "../../assets/logo.svg";
 import styles from "./Cockpit.module.css";
+import PropTypes from "prop-types";
 
-const cockpit = (props) => {
+const Cockpit = (props) => {
+  const togleBtnRef = useRef(null);
+
   // todo: <button className={btnClass} onClick={props.clicked}>
   let btnClass = "";
   if (props.showPersons) {
@@ -26,8 +29,16 @@ const cockpit = (props) => {
       <button className={btnClass} onClick={props.clicked}>
         Show Name
       </button>
+      <button onClick={props.login}>Log In</button>
     </div>
   );
 };
 
-export default cockpit;
+Cockpit.propTypes = {
+  showPersons: PropTypes.bool.isRequired,
+  persons: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string.isRequired,
+  clicked: PropTypes.func.isRequired,
+};
+
+export default Cockpit;

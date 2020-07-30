@@ -11,6 +11,7 @@ const Person = (props) => {
 
   return (
     <Fragment>
+      {props.isAuth ? <p>Authenticated!</p> : <p>Please log in</p>}
       <p onClick={props.click}>
         I'm a {props.name} and i'm {props.age} years old!
       </p>
