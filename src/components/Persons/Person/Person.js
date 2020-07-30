@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useRef } from "react"; //?React.Fragment an
 import PropTypes from "prop-types";
 import styles from "./Person.module.css";
 import withClass from "../../../hoc/withClass";
+import AuthContext from "../../../context/auth-context";
 
 const Person = (props) => {
   const inputFocus = useRef(null);
@@ -11,7 +12,12 @@ const Person = (props) => {
 
   return (
     <Fragment>
-      {props.isAuth ? <p>Authenticated!</p> : <p>Please log in</p>}
+      <AuthContext.Consumer>
+        {(context) =>
+          context.authenticated ? <p>Authenticated!</p> : <p>Please log in</p>
+        }
+      </AuthContext.Consumer>
+
       <p onClick={props.click}>
         I'm a {props.name} and i'm {props.age} years old!
       </p>

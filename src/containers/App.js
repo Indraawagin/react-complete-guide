@@ -4,6 +4,7 @@ import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 import withClass from "../hoc/withClass";
 import Auxiliary from "../hoc/Auxiliary";
+import AuthContext from "../context/auth-context";
 
 //TODO: APP
 const App = (props) => {
@@ -85,14 +86,17 @@ const App = (props) => {
   return (
     <Auxiliary>
       <header className={styles.AppHeader}>
-        <Cockpit
-          title={props.appTitle}
-          showPersons={showPersonState.showPersons}
-          persons={personsState.persons}
-          clicked={tooglePersonHandler}
-          login={loginHandler}
-        />
-        {persons}
+        <AuthContext.Provider
+          value={{ authenticated: auth.authenticated, login: loginHandler }}
+        >
+          <Cockpit
+            title={props.appTitle}
+            showPersons={showPersonState.showPersons}
+            persons={personsState.persons}
+            clicked={tooglePersonHandler}
+          />
+          {persons}
+        </AuthContext.Provider>
       </header>
     </Auxiliary>
   );

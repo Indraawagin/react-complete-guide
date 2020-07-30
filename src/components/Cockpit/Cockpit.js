@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import logo from "../../assets/logo.svg";
 import styles from "./Cockpit.module.css";
 import PropTypes from "prop-types";
+import AuthContext from "../../context/auth-context";
 
 const Cockpit = (props) => {
   const togleBtnRef = useRef(null);
@@ -29,7 +30,9 @@ const Cockpit = (props) => {
       <button className={btnClass} onClick={props.clicked}>
         Show Name
       </button>
-      <button onClick={props.login}>Log In</button>
+      <AuthContext.Consumer>
+        {(context) => <button onClick={context.login}>Log In</button>}
+      </AuthContext.Consumer>
     </div>
   );
 };
