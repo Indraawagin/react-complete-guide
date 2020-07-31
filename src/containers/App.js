@@ -63,7 +63,7 @@ const App = (props) => {
     setshowPersonState({ showPersons: !doesShow });
   };
 
-  //Todo: login={loginHandler}
+  //Todo:  login: loginHandler
   const loginHandler = () => {
     setAuth({
       authenticated: true,

@@ -1,5 +1,6 @@
 import React from "react";
 import Person from "./Person/Person";
+import PropTypes from "prop-types";
 
 const persons = (props) =>
   props.persons.map((person, index) => {
@@ -13,5 +14,9 @@ const persons = (props) =>
       />
     );
   });
+
+persons.propTypes = {
+  clicked: PropTypes.func.isRequired,
+};
 
 export default persons;

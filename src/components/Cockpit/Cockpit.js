@@ -1,11 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext } from "react";
 import logo from "../../assets/logo.svg";
 import styles from "./Cockpit.module.css";
 import PropTypes from "prop-types";
 import AuthContext from "../../context/auth-context";
 
 const Cockpit = (props) => {
-  const togleBtnRef = useRef(null);
+  // todo: <button onClick={authContext.login}>Log In</button>
+  const authContext = useContext(AuthContext);
 
   // todo: <button className={btnClass} onClick={props.clicked}>
   let btnClass = "";
@@ -30,9 +31,7 @@ const Cockpit = (props) => {
       <button className={btnClass} onClick={props.clicked}>
         Show Name
       </button>
-      <AuthContext.Consumer>
-        {(context) => <button onClick={context.login}>Log In</button>}
-      </AuthContext.Consumer>
+      <button onClick={authContext.login}>Log In</button>
     </div>
   );
 };
